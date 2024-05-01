@@ -1,0 +1,28 @@
+.placee-order{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 20px;
+}
+.placee-order-left{
+    width: 100%;
+    max-width: max(80%,500px);
+
+}
+.placee-order-right{
+    width: 100%;
+    max-width: max(20%,500px);
+}
+
+@media (max-width:750px){
+    .placee-order{
+        flex-direction: column;
+    }
+    .placee-order-right{
+        width: 100%;
+        max-width: max(20%,500px);
+        margin-top: -50px;
+        margin-bottom: 15px;
+    }
+}
