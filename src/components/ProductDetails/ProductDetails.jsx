@@ -26,8 +26,10 @@ const ProductDetails = () => {
   };
 
   return (
+    <>
+    <SecondNav/>
     <div className="product-detail">
-      <SecondNav/>
+      
       <img src={product.image} alt={product.name} className="product-detail-image" />
       <div className="product-detail-info">
         <h2>{product.name}</h2>
@@ -46,6 +48,8 @@ const ProductDetails = () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 
