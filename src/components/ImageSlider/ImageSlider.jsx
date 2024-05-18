@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
-import './ImageSlider.css'
+import './ImageSlider.css';
+
 const ImageSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const slides = [
     {
       title: "Malacca",
-      image: "https://farm9.staticflickr.com/8059/28286750501_dcc27b1332_h_d.jpg"
+      image: "https://images.pexels.com/photos/4047055/pexels-photo-4047055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       title: "Cameron Highland",
-      image: "https://farm6.staticflickr.com/5812/23394215774_b76cd33a87_h_d.jpg"
+      image: "https://images.pexels.com/photos/4047054/pexels-photo-4047054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       title: "New Delhi",
-      image: "https://farm8.staticflickr.com/7455/27879053992_ef3f41c4a0_h_d.jpg"
+      image: "https://images.pexels.com/photos/3985169/pexels-photo-3985169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       title: "Ladakh",
-      image: "https://farm8.staticflickr.com/7367/27980898905_72d106e501_h_d.jpg"
+      image: "https://images.pexels.com/photos/6285356/pexels-photo-6285356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       title: "Nubra Valley",
-      image: "https://farm8.staticflickr.com/7356/27980899895_9b6c394fec_h_d.jpg"
+      image: "https://images.pexels.com/photos/8540138/pexels-photo-8540138.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
     }
   ];
   const totalSlides = slides.length;
@@ -29,7 +30,7 @@ const ImageSlider = () => {
   const slideInterval = 3000; // Interval between slides in milliseconds
 
   useEffect(() => {
-    const slideTimer = setInterval(nextSlide, slideInterval);
+    const slideTimer = setInterval(prevSlide, slideInterval);
     return () => clearInterval(slideTimer);
   }, [slideIndex]);
 
@@ -37,10 +38,10 @@ const ImageSlider = () => {
     setSlideIndex(index);
   };
 
-  const nextSlide = () => {
-    let newIndex = slideIndex + 1;
-    if (newIndex >= totalSlides) {
-      newIndex = 0; // Reset index to loop back to the first slide
+  const prevSlide = () => {
+    let newIndex = slideIndex - 1;
+    if (newIndex < 0) {
+      newIndex = totalSlides - 1; // Reset index to loop back to the last slide
     }
     setSlideIndex(newIndex);
   };
@@ -58,7 +59,7 @@ const ImageSlider = () => {
         />
       ))}
       <div className="slider-wrapper">
-        <div className="inner" style={{ width: `${totalSlides * 100}%`, transform: `translateX(-${slideIndex * slideWidth}%)` }}>
+        <div className="inner" style={{ width: `${totalSlides * 100}%`, transform: `translateX(${slideIndex * slideWidth}%)` }}>
           {slides.map((slide, index) => (
             <article key={`slideContent${index}`} style={{ width: `${slideWidth}%` }}>
               <div className={`info ${index % 2 === 0 ? "top-left" : "bottom-right"}`}>

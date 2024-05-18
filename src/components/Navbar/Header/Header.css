@@ -1,7 +1,7 @@
 .header{
     height: 18vw;
     /* margin: 30px auto; */
-    background: url('../../../assets/header_img.png') no-repeat;
+    background: url('https://images.pexels.com/photos/11589208/pexels-photo-11589208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat;
     background-size: contain;
     position: relative; 
     
