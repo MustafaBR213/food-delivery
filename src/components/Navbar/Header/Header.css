@@ -1,5 +1,5 @@
 .header{
-    height: 34vw;
+    height: 18vw;
     /* margin: 30px auto; */
     background: url('../../../assets/header_img.png') no-repeat;
     background-size: contain;
@@ -52,5 +52,14 @@
     }
     .header-contents button{
         padding: 2vw 4vw;
+    }
+    .item1 {
+        grid-column: 1 / 5; /* من العمود الأول إلى العمود الرابع */
+        grid-row: 1 / 6;    /* من الصف الأول إلى الصف الخامس */
+    }
+    
+    .item2 {
+        grid-column: 5 / 9; /* من العمود الخامس إلى العمود الثامن */
+        grid-row: 1 / 6;    /* من الصف الأول إلى الصف الخامس */
     }
 }

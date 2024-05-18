@@ -27,7 +27,13 @@ const Home = () => {
           </ImageSlider>
           </div>
           <div className='placee-order-right'>
+          <div className='item1'>
           <Header/>
+          </div>
+          <div className='item2'>
+          <Header/>
+          </div>
+          
           </div>
         </div>
         <ExploreMenu category={category} setCategory={setCategory}/>

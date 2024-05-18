@@ -11,8 +11,10 @@
 
 }
 .placee-order-right{
+
     width: 100%;
     max-width: max(20%,500px);
+    
 }
 
 @media (max-width:750px){
@@ -20,9 +22,9 @@
         flex-direction: column;
     }
     .placee-order-right{
-        width: 100%;
-        max-width: max(20%,500px);
-        margin-top: -50px;
-        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr); /* ثماني أعمدة */
+        grid-template-rows: repeat(6, 1fr);    /* ست صفوف */
+        gap: 10px; /* يمكنك ضبط الفجوة بين العناصر إذا أردت */
     }
 }

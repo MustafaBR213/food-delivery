@@ -1,117 +1,86 @@
 import React, { useState, useEffect } from "react";
-
-import "./ImageSlider.css";
-
-function ImageSlider({ children }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [slideDone, setSlideDone] = useState(true);
-  const [timeID, setTimeID] = useState(null);
+import './ImageSlider.css'
+const ImageSlider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const slides = [
+    {
+      title: "Malacca",
+      image: "https://farm9.staticflickr.com/8059/28286750501_dcc27b1332_h_d.jpg"
+    },
+    {
+      title: "Cameron Highland",
+      image: "https://farm6.staticflickr.com/5812/23394215774_b76cd33a87_h_d.jpg"
+    },
+    {
+      title: "New Delhi",
+      image: "https://farm8.staticflickr.com/7455/27879053992_ef3f41c4a0_h_d.jpg"
+    },
+    {
+      title: "Ladakh",
+      image: "https://farm8.staticflickr.com/7367/27980898905_72d106e501_h_d.jpg"
+    },
+    {
+      title: "Nubra Valley",
+      image: "https://farm8.staticflickr.com/7356/27980899895_9b6c394fec_h_d.jpg"
+    }
+  ];
+  const totalSlides = slides.length;
+  const slideWidth = 100 / totalSlides; // Width of each slide in percentage
+  const slideInterval = 3000; // Interval between slides in milliseconds
 
   useEffect(() => {
-    if (slideDone) {
-      setSlideDone(false);
-      setTimeID(
-        setTimeout(() => {
-          slideNext();
-          setSlideDone(true);
-        }, 5000)
-      );
-    }
-  }, [slideDone]);
+    const slideTimer = setInterval(nextSlide, slideInterval);
+    return () => clearInterval(slideTimer);
+  }, [slideIndex]);
 
-  const slideNext = () => {
-    setActiveIndex((val) => {
-      if (val >= children.length - 1) {
-        return 0;
-      } else {
-        return val + 1;
-      }
-    });
+  const showSlide = (index) => {
+    setSlideIndex(index);
   };
 
-  const slidePrev = () => {
-    setActiveIndex((val) => {
-      if (val <= 0) {
-        return children.length - 1;
-      } else {
-        return val - 1;
-      }
-    });
-  };
-
-  const AutoPlayStop = () => {
-    if (timeID > 0) {
-      clearTimeout(timeID);
-      setSlideDone(false);
+  const nextSlide = () => {
+    let newIndex = slideIndex + 1;
+    if (newIndex >= totalSlides) {
+      newIndex = 0; // Reset index to loop back to the first slide
     }
-  };
-
-  const AutoPlayStart = () => {
-    if (!slideDone) {
-      setSlideDone(true);
-    }
+    setSlideIndex(newIndex);
   };
 
   return (
-    <div
-      className="container__slider"
-      onMouseEnter={AutoPlayStop}
-      onMouseLeave={AutoPlayStart}
-    >
-      {/* <h2>Order Your <br /> favourite food here</h2>
-      <p>choose afaf as;alkd as raefl;aksrop laoe aedealo lore meao aedma</p> 
-      <button>View Menu</button> */}
-      {children.map((item, index) => {
-        return (
-          <div
-            className={"slider__item slider__item-active-" + (activeIndex + 1)}
-            key={index}
-          >
-            {item}
-            
-          </div>
-        );
-      })}
-
-      <div className="container__slider__links">
-        {children.map((item, index) => {
-          return (
-            <button
-              key={index}
-              className={
-                activeIndex === index
-                  ? "container__slider__links-small container__slider__links-small-active"
-                  : "container__slider__links-small"
-              }
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveIndex(index);
-              }}
-            ></button>
-          );
-        })}
+    <div className="wrapper">
+      {slides.map((slide, index) => (
+        <input
+          key={`slide${index + 1}`}
+          type="radio"
+          name="slider"
+          id={`slide${index + 1}`}
+          checked={index === slideIndex}
+          onChange={() => showSlide(index)}
+        />
+      ))}
+      <div className="slider-wrapper">
+        <div className="inner" style={{ width: `${totalSlides * 100}%`, transform: `translateX(-${slideIndex * slideWidth}%)` }}>
+          {slides.map((slide, index) => (
+            <article key={`slideContent${index}`} style={{ width: `${slideWidth}%` }}>
+              <div className={`info ${index % 2 === 0 ? "top-left" : "bottom-right"}`}>
+                <h3>{slide.title}</h3>
+              </div>
+              <img src={slide.image} alt={slide.title} />
+            </article>
+          ))}
+        </div>
       </div>
-
-      <button
-        className="slider__btn-next"
-        onClick={(e) => {
-          e.preventDefault();
-          slideNext();
-        }}
-      >
-        {">"}
-      </button>
-      <button
-        className="slider__btn-prev"
-        onClick={(e) => {
-          e.preventDefault();
-          slidePrev();
-        }}
-      >
-        {"<"}
-      </button>
+      <div className="slider-prev-next-control">
+        {slides.map((slide, index) => (
+          <label key={`label${index + 1}`} htmlFor={`slide${index + 1}`}></label>
+        ))}
+      </div>
+      <div className="slider-dot-control">
+        {slides.map((slide, index) => (
+          <label key={`dot${index + 1}`} htmlFor={`slide${index + 1}`}></label>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default ImageSlider;

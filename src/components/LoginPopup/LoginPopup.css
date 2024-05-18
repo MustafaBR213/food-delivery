@@ -47,7 +47,7 @@
     padding: 10px;
     border-radius: 4px;
     color: white;
-    background-color: tomato;
+    background-color: #F5416B;
     font-size: 15px;
     cursor: pointer;
 }
@@ -61,7 +61,7 @@
     margin-top: 5px;
 }
 .login-popup p span{
-    color: tomato;
+    color: #F5416B;
     font-weight: 500;
     cursor: pointer;
 }
