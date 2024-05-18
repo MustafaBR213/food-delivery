@@ -49,7 +49,7 @@ const ImageSlider = () => {
   return (
     <div className="wrapper">
       {slides.map((slide, index) => (
-        <input
+        <input className="none"
           key={`slide${index + 1}`}
           type="radio"
           name="slider"

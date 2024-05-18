@@ -1,0 +1,55 @@
+/* Initially hide the second navbar */
+.secondnavbar {
+    display: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 750px) {
+    /* Show the second navbar */
+    .secondnavbar {
+        padding: 20px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
+    /* Style for the menu items */
+    .navbar-menuu {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        color: #49557e;
+        font-size: 18px;
+        flex-direction: row-reverse;
+    }
+
+    /* Style for each individual menu item */
+    .secondnavbar li {
+        cursor: pointer;
+        position: relative; /* Add this line */
+    }
+
+    /* Style for the underline effect */
+    .secondnavbar li::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+        transition: all 0.3s ease; /* Add transition effect */
+    }
+
+    /* Style for the underline effect when active */
+    .secondnavbar li.active::after {
+        background-color: #49557e;
+    }
+    .secondnavbar .active{
+        padding-bottom: 2px;
+        border-bottom: 2px solid #49557e;
+        
+    }
+    
+}

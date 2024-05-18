@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './ProductDetails.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets'; // Assuming you have the assets imported similarly
+import SecondNav from '../Navbar/SecondNav';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const ProductDetails = () => {
 
   return (
     <div className="product-detail">
-      
+      <SecondNav/>
       <img src={product.image} alt={product.name} className="product-detail-image" />
       <div className="product-detail-info">
         <h2>{product.name}</h2>

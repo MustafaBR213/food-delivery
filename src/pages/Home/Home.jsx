@@ -6,6 +6,7 @@ import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
 import AppDownload from '../../components/AppDownload/AppDownload'
 import ImageSlider from '../../components/ImageSlider/ImageSlider'
 import images from "../../data/imagess";
+import SecondNav from '../../components/Navbar/SecondNav'
 
 const Home = () => {
 
@@ -15,8 +16,7 @@ const Home = () => {
     <div className='Home'>
         
         
-          
-          
+        <SecondNav/>
         <div className='placee-order'>
           <div className='placee-order-left'>
           <ImageSlider>
