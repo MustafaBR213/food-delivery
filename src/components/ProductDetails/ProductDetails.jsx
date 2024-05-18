@@ -26,11 +26,12 @@ const ProductDetails = () => {
 
   return (
     <div className="product-detail">
+      
       <img src={product.image} alt={product.name} className="product-detail-image" />
       <div className="product-detail-info">
         <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <p>${product.price}</p>
+        <p>{product.description}{product.description}{product.description}{product.description}</p>
+        <h1 className="food-item-price">${product.price}</h1>
         <div className="product-detail-cart-actions">
           {!cartItems[id] ? (
             <img className='add' onClick={handleAddToCart} src={assets.add_icon_white} alt='' />

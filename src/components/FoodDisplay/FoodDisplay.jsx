@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './FoodDisplay.css';
 import { StoreContext } from '../../context/StoreContext';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import FoodItem from '../FoodItem/FoodItem';
 
 const FoodDisplay = ({ category }) => {
@@ -11,16 +11,17 @@ const FoodDisplay = ({ category }) => {
     <div className='food-display' id='food-display'>
       <h2>Top dishes near you </h2>
       <div className="food-display-list">
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (category === "All" || category === item.category) {
             return (
-                <FoodItem 
-                  id={item._id}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  image={item.image}
-                ></FoodItem>
+              <FoodItem 
+                key={item._id} // Provide a unique key prop
+                id={item._id}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+              />
             );
           }
           return null;

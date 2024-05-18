@@ -73,7 +73,12 @@
   font-size: 16px;
   font-weight: 500;
 }
-
+.food-item-price{
+  color: #F5416B;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 10px 0px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
